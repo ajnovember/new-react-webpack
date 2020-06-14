@@ -1,0 +1,46 @@
+@import 'variables';
+
+.Header {
+	margin-top: 40px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	font-size: 22px;
+	&__name {
+		font-size: 20px;
+		font-weight: 500;
+		letter-spacing: 2px;
+		line-height: 22px;
+		text-decoration: none !important;
+	}
+	&__nav {
+		display: flex;
+		flex-flow: column nowrap;
+		margin: 0px;
+		list-style: none;
+		padding: 0px;
+		font-size: 22px;
+		letter-spacing: 2px;
+	}
+	&__nav__item {
+		margin-bottom: 10px;
+		font-size: 18px;
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
+
+	@media (min-width: $phone) {
+		align-items: center;
+		&__nav {
+			flex-flow: row nowrap;
+		}
+		&__nav__item {
+			margin: 0px 0px 0px 40px;
+		}
+	}
+
+	@media (min-width: $tablet) {
+		margin-top: 30px;
+	}
+}

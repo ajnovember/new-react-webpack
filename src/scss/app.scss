@@ -1,0 +1,85 @@
+@import 'variables';
+
+body {
+	margin: 0px;
+	position: relative;
+	font-family: $primary-font-family;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	background-color: $background;
+	color: $primary;
+	a {
+		color: $primary;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.light {
+		color: $primary-light;
+	}
+	.border-light {
+		margin-top: 15px;
+		margin-bottom:15px;
+		border-top: 1px solid $primary-light;
+	}
+	&.alternate--1 {
+		background-color: $background-alt--1;
+		color: $primary-alt--1;
+		a {
+			color: $primary-alt--1;
+		}
+		.light {
+			color: $primary-light-alt--1;
+		}
+		.border-light {
+			border-top: 1px solid $primary-light-alt--1;
+		}
+	}
+	&.alternate--2 {
+		background-color: $background-alt--2;
+		color: $primary-alt--2;
+		a {
+			color: $primary-alt--2;
+		}
+		.light {
+			color: $primary-light-alt--2;
+		}
+		.border-light {
+			border-top: 1px solid $primary-light-alt--2;
+		}
+	}
+	&.alternate--3 {
+		background-color: $background-alt--3;
+		color: $primary-alt--3;
+		a {
+			color: $primary-alt--3;
+		}
+		.light {
+			color: $primary-light-alt--3;
+		}
+		.border-light {
+			border-top: 1px solid $primary-light-alt--3;
+		}
+	}
+}
+
+#App {
+	padding: 0px 20px;
+	max-width: 1000px;
+}
+
+@media (min-width: $phone) {
+	#App {
+		padding: 0px 40px;
+	}
+}
+
+@media (min-width: $tablet) {
+	#App {
+		width: 70%;
+		margin: auto;
+		max-width: 600px;
+	}
+}
+

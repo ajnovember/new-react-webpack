@@ -1,0 +1,17 @@
+@import 'variables';
+
+.About {
+	font-size: $primary-font;
+	animation-delay: 1.5s;
+
+	&__description {
+		margin-top:40px;
+		line-height: 1.75;
+		animation-delay: 1.5s;
+		font-size: 15px;
+	}
+	&__email {
+		text-decoration: underline;
+	}
+
+}

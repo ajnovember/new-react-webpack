@@ -1,0 +1,26 @@
+/* Palette */
+$background: rgb(241, 241, 255);
+$primary: rgb(0, 48, 59);
+$primary-light: #00366980;
+
+$background-alt--1: #FFFFFF;
+$primary-alt--1: #1c00a8;
+$primary-light-alt--1: rgba(28, 0, 168, 0.5);
+
+$background-alt--2: #fdf6e3;
+$primary-alt--2: #2aa198;
+$primary-light-alt--2: rgba(42,161,152, 0.5);
+
+$background-alt--3: #073642;
+$primary-alt--3: #b58900;
+$primary-light-alt--3: rgba(181,137,0, 0.5);
+
+
+/* Breakpoints*/
+$phone : 568px;
+$tablet: 768px;
+
+/* Font */
+$primary-font: 18px;
+$primary-font-family: 'Open Sans', sans-serif;
+$jumbo-font-family: $primary-font-family;
