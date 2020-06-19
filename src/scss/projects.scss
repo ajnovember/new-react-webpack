@@ -1,0 +1,16 @@
+@import 'variables';
+
+.projects {
+    font-size: $primary-font;
+    font-family: $primary-font-family;
+
+    //animation-delay: 1.5s;
+
+    .title{
+        font-size: 20px;
+        font-family: $primary-font-family;
+        animation-delay: 3.2s;
+    }
+    
+
+}

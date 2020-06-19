@@ -2,16 +2,33 @@
 
 .About {
 	font-size: $primary-font;
-	animation-delay: 1.5s;
+	//animation-delay: 1.5s;
 
 	&__description {
 		margin-top:40px;
 		line-height: 1.75;
 		animation-delay: 1.5s;
-		font-size: 15px;
+		font-size: 13px;
 	}
 	&__email {
 		text-decoration: underline;
 	}
 
+}
+
+.delay1{
+    animation-delay: 1.6s;
+}
+
+.delay2{
+    animation-delay: 2.4s;
+}
+
+.delay3{
+    animation-delay: 3.2s;
+}
+
+iframe{
+    margin:0;
+    padding:0;
 }

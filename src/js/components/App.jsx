@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Header from './Header.jsx' 
-import About from './About.jsx' 
+import Header from './Header.jsx';
+import About from './About.jsx' ;
+import Projects from './Projects.jsx';
 import ReactDOM from "react-dom";
 import style from "../../scss/app.scss";
 import animation from "../../scss/animation.scss";
@@ -17,8 +18,10 @@ class App extends Component {
             <Header />
 
             <About />
-           
 
+            <Projects />
+
+           
         </div>
        
       );

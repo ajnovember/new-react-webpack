@@ -10,10 +10,10 @@ class Header extends Component {
     return (
     
         <header className="Header ">
-            <div className="Header__name animation fadeDown">adam november</div>
+            <div className="Header__name animation fadeDown ">adam november</div>
             <ul className="Header__nav">
-                <li className="Header__nav__item animation fadeDown">
-                    <a target="_blank" href="AdamNovemberResume.pdf">resume</a>
+                <li className="delay0 Header__nav__item animation fadeDown">
+                    <a  target="_blank" href="AdamNovemberResume.pdf">resume</a>
                 </li>
             </ul>
         </header>
@@ -24,6 +24,4 @@ class Header extends Component {
 
 export default Header;
 
-const wrapper = document.getElementById("app");
-wrapper ? ReactDOM.render(<Header />, wrapper) : false;
 
