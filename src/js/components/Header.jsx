@@ -13,7 +13,7 @@ class Header extends Component {
             <div className="Header__name animation fadeDown ">adam november</div>
             <ul className="Header__nav">
                 <li className="delay0 Header__nav__item animation fadeDown">
-                    <a  target="_blank" href="AdamNovemberResume.pdf">resume</a>
+                    <a  target="_blank" href="../../AdamNovemberResume.pdf">resume</a>
                 </li>
             </ul>
         </header>

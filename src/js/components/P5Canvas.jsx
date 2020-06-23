@@ -8,127 +8,161 @@ import 'p5/lib/addons/p5.sound';
 class P5Canvas extends React.Component {
     constructor(props) {
       super(props)
-      this.myRef = React.createRef()
+      this.myRef = React.createRef();
+      
     }
   
     Sketch = (p) => {
-      
         let drops = new Array();
         let cnv;
-        let s;
-        let oscs = new Array();
-        let freqs = [92,103,123,138,155,185,207,247];
-        let envs = new Array();
+        let freqs = [92,103,123,138,155,185,207,247,276,310];
+      //  let freqs = [21,23,25,27,28,30,32,34,35,37,39,40,42,44,45,47,49,51,52,54,56,57,59,61,63,64,];
+        let synths = new Array();
         let f; 
+        let count = 0;
+        let steps = 10;
 
+        
         class Drop {
             constructor() {
 
                 this.pos = p.createVector(p.mouseX, p.mouseY);
                 this.opy = p.mouseY;
+                this.size = p.random(5,10);
+                this.c = p.random(180,240);
+                this.sc = p.random(0,255);
+                
+                //this.c = 
                 
 
                 this.update = function () {
                    this.pos.y += 4; 
-                   if(this.pos.y>p.height-17){
-                       
-                       //this.pos.x=p.mouseX;
+                   if(this.pos.y>p.height-20){
+
                        this.pos.y=this.opy;
                        let o = p.round(p.map(this.pos.x,0,p.width,0,7));
-                       //console.log(o);
-                       envs[o].setADSR(.05,.1,.5,.1);
-                       envs[o].setRange(.2,0); 
-                       envs[o].play();
+                       this.splash();
+                       synths[o].play();
+
                    }
                 };
                 this.show = function () {
-                    p.noStroke();   
-                    p.fill(0,50,100,p.random(50,100));
-                    p.ellipse(this.pos.x+p.random(0,1), this.pos.y, 2, 7);
-                    p.fill(210,50);
 
-                    for(let i = 0; i < 6; i++){
-                        p.ellipse(this.pos.x+p.random(-20,20),this.opy+p.random(-7,7),15,15);
+                    p.noStroke();   
+                    p.fill(10,10,50,p.random(50,100));
+                    p.ellipse(this.pos.x+p.random(0,1), this.pos.y, p.random(2,4), p.random(7,10));
+                    
+                };
+
+                this.cloud = function(){
+                    p.fill(this.c);
+                    for(let i = 0; i < this.size; i++){
+                        p.ellipse(this.pos.x+p.random(-20,20),this.opy+p.random(-5,5),p.random(10,23));
                     }
-                    if(this.pos.y>p.height-23){
+                }
+
+
+
+                this.splash = function(){
+                        p.colorMode(p.HSB);
+                        p.noFill();
+                        p.strokeWeight(2);
                         for(let j = 0; j<10; j++){
-                            p.noFill();
-                            p.stroke(0,50,100,p.random(150-j));
-                            p.arc(this.pos.x+p.random(0,1), p.height-18, j*4, j*3,p.PI,p.TWO_PI);
+                           // p.fill(0,50,100,p.random(10));
+                            p.stroke(this.sc+ (j*5),100,100);
+                            p.arc(this.pos.x+p.random(0,1), p.height-18, j*6, j*5,p.PI,p.TWO_PI);
                         }
-                    }
+                        p.colorMode(p.RGB);
+                    
                 };
                 
+            }
+        }
+
+        class Synth { 
+            constructor(num){
+                this.freq = freqs[num];
+                this.vibrate = 0;
+                this.osc = new p5.Oscillator(this.freq*2,'sine');
+                this.env = new p5.Envelope();
+                this.env.setADSR(.05,.1,.4,.3);
+                this.env.setRange(.2,0); 
+                this.env.setInput(this.osc);
+                this.env.connect(f);
+                this.osc.start();
+
+                this.play= function(){
+                    this.env.setADSR(.05,.1,.4,.3);
+                    this.env.setRange(.2,0);
+                    this.env.play()
+                }
+
+               /* this.show=function(){
+                    p.noStroke();
+                    p.fill(this.r,this.g,this.b);
+                    p.quad(this.x+this.w,this.y+this.h/2,this.x,this.y+this.h/2,  this.x+(this.w/16),this.y-this.h/2, this.x+(15*this.w/16),this.y-this.h/2);
+                }*/
             }
         }
 
         
         p.setup = () => {
-            p.windowResized();
             f = new p5.LowPass();
             f.set(1000,.6);
-            p.rectMode(p.CENTER);
-            s=false;
-            p.noStroke();
-            p.fill(50,10)
-            //let o  = new p5.Oscillator('sine');
-           // o.start();
-            for(let i = 0; i<8; i++){
-                oscs[i] = new p5.Oscillator(freqs[i]*2,'sine');
-                envs[i] = new p5.Envelope(); 
-                oscs[i].start();
-                envs[i].setInput(oscs[i]);
-                envs[i].connect(f);
-
+        
+            p.windowResized();
+            for(let i = 0; i< steps; i++){
+                synths[i] = new Synth(i);
             }
               
-            
+           
         }
      
         
         p.draw = () => {
-        if(!s){
-            if(p.millis()>4000){
-                s=true;
-            }
-        } 
-            if(s){
-                p.background(255,40);
-                for(let j = 0; j<8; j++){
-                    p.noStroke();
-                    p.fill(107, 32, 6,50);
-                   // if(oscs)
-
-                    p.rect(j*(p.width/8)+(p.width/16),p.height-18,(p.width/8)-1,18-(j*2),3);
-                }
                 
-              
-                        
+                p.background(255,  40); 
+
+                count++; 
+                
+
+
+
                 if(drops.length>0){
                     for(let i = 0; i<drops.length; i++){
                         drops[i].update();
                         drops[i].show();
+                        drops[i].cloud();
+                        
                     }
                 }
-            }
+            
         } 
 
         p.mousePressed = () => {
-            p.userStartAudio();
-            p.mouseCheck();
-            drops.push(new Drop);
+            if(p.mouseY>50){
+                p.userStartAudio();
+                p.mouseCheck();
+                drops.push(new Drop);
+                
+        }
             
         }
 
         p.windowResized = () =>{
-            let h = window.innerHeight-300;
-            let w = window.innerWidth*.80;
-            if(w>800)w=800;
+            //let a = React.findDOMNode(this.refs.about)
+           //  console.log(a);
+            let h = window.innerHeight-50;
+            let w = window.innerWidth;
+            //if(w>800)w=800;
             cnv = p.createCanvas(w,h);
+            drops = new Array();
+            p.background(255);
         }
 
         p.keyPressed = () =>{
             drops = new Array();
+            p.background(255);
         }
 
         p.mouseCheck = (drop) => {
@@ -141,16 +175,17 @@ class P5Canvas extends React.Component {
                 }
             }
         }
+
+
     }
 
     componentDidMount() {
-        this.myP5 = new p5(this.Sketch, this.myRef.current)
+        this.myP5 = new p5(this.Sketch, this.myRef.current);
     }
   
     render() {
       return (
         <div ref={this.myRef}>
-  
         </div>
       )
     }
@@ -159,3 +194,5 @@ class P5Canvas extends React.Component {
  
 
 export default P5Canvas;
+
+

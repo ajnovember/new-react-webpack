@@ -6,7 +6,7 @@ body {
 	font-family: $primary-font-family;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
-	background-color: $background;
+	//background-color: $background;
 	color: $primary;
 	a {
 		color: $primary;
@@ -65,21 +65,29 @@ body {
 }
 
 #App {
-	padding: 0px 20px;
-	max-width: 1000px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	
 }
 
-@media (min-width: $phone) {
-	#App {
-		padding: 0px 40px;
+.content{
+	width: 75%;
+	margin:auto;
+}
+
+@media (max-width: $phone) {
+	.content{
+			width:90%;
+		
 	}
 }
 
 @media (min-width: $tablet) {
 	#App {
-		width: 80%;
+	
 		margin: auto;
-		max-width: 800px;
+		
 	}
 }
 
