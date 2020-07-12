@@ -15,22 +15,18 @@
 	}
 	&__nav {
 		display: flex;
-		flex-flow: column nowrap;
-		margin: 0px;
+		flex-flow: row nowrap;
+		margin-top: 7px;
 		list-style: none;
-		padding: 0px;
-		letter-spacing: 2px;
+		letter-spacing: 1.5px;
 	}
 	&__nav__item {
-		margin-top: 5px;
-		font-size: 15px;
-		&:last-child {
-			margin-bottom: 0px;
-		}
+		margin-left:15px;
+		font-size: 14px;
+		text-decoration: none;
+		color:black;
 	}
-	.delay0{
-		animation-delay: .8s;
-	}
+	
 
 	
 }

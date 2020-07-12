@@ -175,8 +175,6 @@ class P5Canvas extends React.Component {
                 }
             }
         }
-
-
     }
 
     componentDidMount() {

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import style from "../../scss/header.scss";
+import  "../../scss/header.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class Header extends Component {
   
@@ -13,8 +19,18 @@ class Header extends Component {
             <div className="Header__name animation fadeDown ">adam november</div>
             <ul className="Header__nav">
                 <li className="delay0 Header__nav__item animation fadeDown">
-                    <a  target="_blank" href="../../AdamNovemberResume.pdf">resume</a>
+                  <Link to="/">home</Link>
                 </li>
+                <li className="delay1 Header__nav__item animation fadeDown">
+                  <Link to="/projects">projects</Link>
+                </li>
+                <li className="delay2 Header__nav__item animation fadeDown">
+                  <Link to="/teaching">teaching</Link>
+                </li>
+                  <li className="delay3 Header__nav__item animation fadeDown">
+                        <a  target="_blank" href="/AdamNovemberResume.pdf">resume</a>
+                </li>
+
             </ul>
         </header>
   
